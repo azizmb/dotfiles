@@ -1,0 +1,5 @@
+[user]
+	name = Aziz M. Bookwala
+	email = me@azizmb.in
+[core]
+	excludesfile = /home/aziz/.gitignore_global
