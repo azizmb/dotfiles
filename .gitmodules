@@ -1,3 +1,6 @@
 [submodule "dotty"]
 	path = dotty
 	url = git@github.com:vibhavp/dotty.git
+[submodule "emacs.d"]
+	path = emacs.d
+	url = git@github.com:azizmb/emacs.d.git
