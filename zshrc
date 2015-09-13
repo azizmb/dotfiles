@@ -43,11 +43,17 @@ antigen bundles <<EOBUNDLES
 arzzen/calc.plugin.zsh
 djui/alias-tips
 
+tarruda/zsh-autosuggestions
+jimmijj/zsh-syntax-highlighting
+
+pip
+python
 git
 virtualenvwrapper
 docker
 docker-compose
 aws
+extract
 
 EOBUNDLES
 
