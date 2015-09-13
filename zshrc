@@ -37,9 +37,6 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 
 source $ZSH/oh-my-zsh.sh
 
+alias got="ps aux | grep "
 
 eval "$(direnv hook zsh)"
-
-
-alias docker-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}' "
-alias got="ps aux | grep "
