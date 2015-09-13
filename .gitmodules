@@ -7,3 +7,6 @@
 [submodule "thinklight"]
 	path = thinklight
 	url = git@github.com:jeremija/thinklight.git
+[submodule "blueyed_dotfiles"]
+	path = blueyed_dotfiles
+	url = git@github.com:blueyed/dotfiles.git
