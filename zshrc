@@ -14,22 +14,11 @@ compinit
 # Path to your oh-my-zsh installation.
 export ZSH=/home/aziz/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd.mm.yyyy"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenvwrapper docker docker-compose aws)
 
 # User configuration
 
@@ -40,3 +29,28 @@ source $ZSH/oh-my-zsh.sh
 alias got="ps aux | grep "
 
 eval "$(direnv hook zsh)"
+
+# Antigen <3
+[[ ! -d ~/src/antigen ]] &&
+        mkdir -p ~/src && git clone https://github.com/zsh-users/antigen.git ~/src/antigen
+
+. ~/src/antigen/antigen.zsh
+
+antigen use oh-my-zsh
+
+antigen theme robbyrussell
+
+antigen bundles <<EOBUNDLES
+
+arzzen/calc.plugin.zsh
+djui/alias-tips
+
+git
+virtualenvwrapper
+docker
+docker-compose
+aws
+
+EOBUNDLES
+
+antigen apply
