@@ -1,0 +1,1 @@
+alias got="ps aux | grep "
