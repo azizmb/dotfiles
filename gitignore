@@ -39,6 +39,8 @@ Thumbs.db
 # Emacs #
 #########
 .projectile
+\#*\#
+\.\#*
 
 # Env #
 #######
