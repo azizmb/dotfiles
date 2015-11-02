@@ -6,13 +6,15 @@ function ebnames() {
         return 1
     fi
 
-    output=$(aws elasticbeanstalk describe-environments --profile=$1 --output=json | jq -r ".Environments[].EnvironmentName" | uniq | sort)
+    cachefile="/tmp/ebnames-$1-$(date +'%Y%m%d').cache"
+
+    test -f "$cachefile" || aws elasticbeanstalk describe-environments --profile=$1 --output=json | jq -r ".Environments[].EnvironmentName" | uniq | sort > "$cachefile"
 
     if [ $2 ]
     then
-          echo $output | grep $2
+          grep $2 $cachefile
     else
-          echo $output
+          cat $cachefile
     fi
 }
 
