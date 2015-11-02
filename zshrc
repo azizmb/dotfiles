@@ -43,6 +43,7 @@ antigen bundles <<EOBUNDLES
 arzzen/calc.plugin.zsh
 djui/alias-tips
 
+zsh-users/zsh-completions
 tarruda/zsh-autosuggestions
 jimmijj/zsh-syntax-highlighting
 
