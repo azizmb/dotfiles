@@ -56,6 +56,8 @@ docker-compose
 aws
 extract
 
+$HOME/.oh-my-zsh/custom/plugins/ebutils
+
 EOBUNDLES
 
 antigen apply
