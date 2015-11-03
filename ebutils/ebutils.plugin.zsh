@@ -2,7 +2,7 @@ function ebnames() {
     if [ "$#" -lt 1 ]; then
         echo "Usage aws_names <aws profile name>"
         echo "e.g.:"
-        echo " aws_names production"
+        echo " ebnames production"
         return 1
     fi
 
@@ -18,11 +18,11 @@ function ebnames() {
     fi
 }
 
-function ebinstances() {
+function awsinstances() {
     if [ "$#" -ne 2 ]; then
-        echo "Usage eb_instances <aws profile name> <environment name>"
+        echo "Usage awsinstances <aws profile name> <environment name>"
         echo "e.g.:"
-        echo " eb_instances production kraken-prod-api"
+        echo " awsinstances production kraken-prod-api"
         return 1
     fi
 
@@ -52,7 +52,7 @@ function ebssh() {
         return 1
     fi
 
-    local IP=$(ebinstances $1 $2 | head -n 1)
+    local IP=$(awsinstances $1 $2 | head -n 1)
 
     if [ -z "$IP" ]; then
         echo "No instance found!"
