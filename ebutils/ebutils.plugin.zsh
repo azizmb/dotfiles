@@ -104,7 +104,28 @@ _ebnames() {
   esac
 }
 
-compdef _ebenvironments ebinstances
+__awsinstances(){
+    cachefile="/tmp/awsinstances-$1-$(date +'%Y%m%d').cache"
+
+    test -f "$cachefile" || aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --profile=$1 --output=json | jq -r ".Reservations[].Instances[].Tags[] | select(.Key==\"Name\") | .Value" | uniq | sort > "$cachefile"
+
+    cat $cachefile
+}
+
+_awsinstances() {
+  local state
+
+  _arguments \
+    '1: :->aws_profile'\
+    '2:Instance name:->instance_name'
+
+    case $state in
+        (aws_profile) _arguments '1:profiles:($(__awsprofiles))' ;;
+      (instance_name) compadd "$@" $(__awsinstances $words[2]) ;;
+    esac
+}
+
+compdef _awsinstances awsinstances
 compdef _ebenvironments ebssh
 compdef _awssh awssh
 compdef _ebnames ebnames
