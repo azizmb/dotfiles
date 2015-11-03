@@ -43,8 +43,43 @@ function awssh() {
     ssh -t $1 "ssh -t $2 $3"
 }
 
+_krakenmanage() {
+  local state
+
+  _arguments \
+    '1: :->aws_profile'\
+    '2: :->environment'
+
+    case $state in
+        (aws_profile) _arguments '1:Profile:($(__awsprofiles))' ;;
+        (environment) _arguments '2:Environment:($(ebnames $words[2] kraken | sed 's/kraken-//p'))' ;;
+        # compadd "$@" $(ebnames $words[2] kraken | sed 's/kraken-//p') ;;
+    esac
+}
+
+function krakenmanage() {
+    if [ "$#" -gt 4 ]; then
+        echo "Usage krakenssh <environment> <instance> <management command>"
+        echo "e.g.:"
+        echo " 1) ebssh production prod-api"
+        echo " 2) ebssh staging prod-web dbshell"
+        return 1
+    fi
+
+    local command kraken="/home/dubizzle/webapps/kraken_env/"
+
+    if [ $3 ]
+    then
+          command=$3
+    else
+          command='shell'
+    fi
+
+    ebssh $1 kraken-$2 "$kraken/bin/python $kraken/kraken/manage.py $command"
+}
+
 function ebssh() {
-    if [ "$#" -ne 2 ]; then
+    if [ "$#" -gt 3 ]; then
         echo "Usage ebssh <environment> <instance>"
         echo "e.g.:"
         echo " 1) ebssh production kraken-prod-api"
@@ -52,14 +87,21 @@ function ebssh() {
         return 1
     fi
 
-    local IP=$(awsinstances $1 $2 | head -n 1)
+    local command IP=$(awsinstances $1 $2 | sort -R | head -n 1)
 
     if [ -z "$IP" ]; then
         echo "No instance found!"
         return 1
     fi
 
-    awssh $1 ec2-user@${IP} "'sudo docker exec -it \`sudo docker ps | grep latest | cut -d\" \" -f 1\` bash'"
+    if [ $3 ]
+    then
+          command=$3
+    else
+          command=bash
+    fi
+
+    awssh $1 ec2-user@${IP} "'sudo docker exec -it \`sudo docker ps | grep latest | cut -d\" \" -f 1\` $command'"
 }
 
 __awsprofiles() {
@@ -126,6 +168,7 @@ _awsinstances() {
 }
 
 compdef _awsinstances awsinstances
+compdef _krakenmanage krakenmanage
 compdef _ebenvironments ebssh
 compdef _awssh awssh
 compdef _ebnames ebnames
