@@ -113,11 +113,11 @@ _ebenvironments() {
 
   _arguments \
     '1: :->aws_profile'\
-    '*: :->eb_name'
+    '2: :->eb_name'
 
   case $state in
-    (aws_profile) _arguments '1:profiles:($(__awsprofiles))' ;;
-              (*) compadd "$@" $(ebnames $words[2]) ;;
+    (aws_profile) _arguments '1:Profile:($(__awsprofiles))' ;;
+        (eb_name) _arguments '2:Environment:($(ebnames $words[2]))' ;;
   esac
 }
 
@@ -126,11 +126,11 @@ _awssh() {
 
   _arguments \
     '1: :->aws_profile'\
-    '2:ssh host:'\
-    '3:other ssh options:'
+    '2:SSH host:'\
+    '3:Other SSH options:'
 
   case $state in
-    (aws_profile) _arguments '1:profiles:($(__awsprofiles))' ;;
+    (aws_profile) _arguments '1:Profile:($(__awsprofiles))' ;;
   esac
 }
 
@@ -142,7 +142,7 @@ _ebnames() {
     '2:Partial environment name:'
 
   case $state in
-    (aws_profile) _arguments '1:profiles:($(__awsprofiles))' ;;
+    (aws_profile) _arguments '1:Profile:($(__awsprofiles))' ;;
   esac
 }
 
@@ -159,11 +159,11 @@ _awsinstances() {
 
   _arguments \
     '1: :->aws_profile'\
-    '2:Instance name:->instance_name'
+    '2: :->instance_name'
 
     case $state in
-        (aws_profile) _arguments '1:profiles:($(__awsprofiles))' ;;
-      (instance_name) compadd "$@" $(__awsinstances $words[2]) ;;
+        (aws_profile) _arguments '1:Profile:($(__awsprofiles))' ;;
+      (instance_name) _arguments '2:Instance:($(__awsinstances $words[2]))' ;;
     esac
 }
 
