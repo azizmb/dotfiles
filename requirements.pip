@@ -1,0 +1,7 @@
+awscli
+flake8
+ipython
+requests
+saws
+virtualenv
+virtualenvwrapper
