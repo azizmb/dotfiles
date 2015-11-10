@@ -101,11 +101,11 @@ function ebssh() {
           command=bash
     fi
 
-    awssh $1 ec2-user@${IP} "'sudo docker exec -it \`sudo docker ps | grep latest | cut -d\" \" -f 1\` $command'"
+    awssh $1 ec2-user@${IP} "'sudo docker exec -it \`sudo docker ps --latest | tail -n1 | cut -d\" \" -f 1\` $command'"
 }
 
 __awsprofiles() {
-    sed -n -E "s/\[([a-zA-Z0-9_\-]+)\]/\1/p" ~/.aws/credentials | tr \\n " "
+    sed -n -E "s/\[([a-zA-Z0-9_\-]+)\]/\1/p" ~/.aws/credentials | sort | tr \\n " "
 }
 
 _ebenvironments() {
