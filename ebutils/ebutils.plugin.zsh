@@ -108,7 +108,7 @@ __awsprofiles() {
     sed -n -E "s/\[([a-zA-Z0-9_\-]+)\]/\1/p" ~/.aws/credentials | sort | tr \\n " "
 }
 
-_ebenvironments() {
+_ebssh() {
   local state
 
   _arguments \
@@ -169,6 +169,6 @@ _awsinstances() {
 
 compdef _awsinstances awsinstances
 compdef _krakenmanage krakenmanage
-compdef _ebenvironments ebssh
+compdef _ebssh ebssh
 compdef _awssh awssh
 compdef _ebnames ebnames
