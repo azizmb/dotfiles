@@ -18,6 +18,7 @@ export ZSH=/home/aziz/.oh-my-zsh
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="dd.mm.yyyy"
+export ZSH_CUSTOM=$HOME/dotfiles/zsh
 
 
 # User configuration
