@@ -63,8 +63,6 @@ EOBUNDLES
 
 antigen apply
 
-source $HOME/.alias
-
 
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '%B%d%b'
