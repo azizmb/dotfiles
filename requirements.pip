@@ -4,6 +4,7 @@ requests
 saws
 virtualenv
 virtualenvwrapper
+httpie
 
 # Emacs
 flake8
