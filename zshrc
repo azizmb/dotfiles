@@ -57,7 +57,7 @@ docker-compose
 aws
 extract
 
-$HOME/.oh-my-zsh/custom/plugins/ebutils
+$HOME/work/awsshutils
 
 EOBUNDLES
 
