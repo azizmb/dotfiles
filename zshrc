@@ -73,3 +73,5 @@ zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST
 
 setopt correctall
+
+alias apt-get='apt-fast'
