@@ -6,9 +6,4 @@ virtualenv
 virtualenvwrapper
 httpie
 
-# Emacs
-flake8
-autopep8
-importmagic
-jedi
-yapf
+-r python_dev.pip
