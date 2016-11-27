@@ -1,5 +1,8 @@
 flake8
 autopep8
+pep8-naming
 importmagic
 jedi
 yapf
+ipdb
+ipython
