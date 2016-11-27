@@ -87,3 +87,6 @@ export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Cask
 export PATH="${HOME}/.cask/bin:$PATH"
 
+
+export WORK_DIR="${HOME}/work"
+
