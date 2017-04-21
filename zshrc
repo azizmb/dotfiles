@@ -23,7 +23,7 @@ export ZSH_CUSTOM=$HOME/dotfiles/zsh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HOME/.local/bin/"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HOME/.local/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -56,8 +56,9 @@ docker
 docker-compose
 aws
 extract
+gitignore
 
-$HOME/work/awsshutils
+$HOME/work/awsshutils --no-local-clone
 
 EOBUNDLES
 
@@ -90,3 +91,19 @@ export PATH="${HOME}/.cask/bin:$PATH"
 
 export WORK_DIR="${HOME}/work"
 
+
+export PATH="${HOME}/work/git-utils:$PATH"
+
+
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+source ~/.creds
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export EMACS='emacs25'
+
+
+function rmhis() {
+    LC_ALL=C sed -i '/$1/d' $HISTFILE
+}
