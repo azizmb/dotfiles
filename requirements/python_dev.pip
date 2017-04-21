@@ -1,8 +1,9 @@
-flake8
 autopep8
-pep8-naming
+flake8
 importmagic
-jedi
-yapf
 ipdb
 ipython
+isort
+jedi
+pep8-naming
+yapf
