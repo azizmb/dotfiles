@@ -12,7 +12,7 @@ compinit
 # End of lines added by compinstall
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/aziz/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
