@@ -1,0 +1,18 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Enpass
+Name[en_IN]=Enpass
+GenericName=Enpass Password Manager
+Icon=enpass
+Icon[en_IN]=enpass
+Terminal=false
+Exec=/opt/enpass/Enpass %U
+MimeType=x-scheme-handler/enpassauth;x-scheme-handler/enpasscard;x-scheme-handler/enpassstart;x-scheme-handler/enpass;x-scheme-handler/cloudkit-7adb8cc6tf.in.sinew.walletx;application/enpasscard;
+Categories=Utility
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=Enpass
+Comment[en_US]=No description
+X-GNOME-Autostart-Delay=10
