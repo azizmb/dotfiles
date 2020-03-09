@@ -31,7 +31,7 @@ eval "$(direnv hook zsh)"
 
 # Antigen <3
 [[ ! -d ~/src/antigen ]] &&
-        mkdir -p ~/src && git clone https://github.com/zsh-users/antigen.git ~/src/antigen
+	mkdir -p ~/src && git clone https://github.com/zsh-users/antigen.git ~/src/antigen
 
 . ~/src/antigen/antigen.zsh
 
@@ -49,6 +49,7 @@ tarruda/zsh-autosuggestions
 jimmijj/zsh-syntax-highlighting
 
 pip
+pipenv
 python
 git
 virtualenvwrapper
@@ -57,8 +58,6 @@ docker-compose
 aws
 extract
 gitignore
-
-$HOME/work/awsshutils --no-local-clone
 
 EOBUNDLES
 
@@ -97,13 +96,35 @@ export PATH="${HOME}/work/git-utils:$PATH"
 
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
-source ~/.creds
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-export EMACS='emacs25'
+export EMACS='emacs-snapshot'
 
 
 function rmhis() {
     LC_ALL=C sed -i '/$1/d' $HISTFILE
 }
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/azizbookwala/work/syncer/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/azizbookwala/work/syncer/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/azizbookwala/work/syncer/node_modules/tabtab/.completions/sls.zsh ]] && . /home/azizbookwala/work/syncer/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/azizbookwala/work/syncer/node_modules/tabtab/.completions/slss.zsh ]] && . /home/azizbookwala/work/syncer/node_modules/tabtab/.completions/slss.zsh
+
+alias aws-okta=". ~/.aws_okta/aws-okta"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+
+export PATH="/home/azizbookwala/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+export PATH="$PATH:/usr/lib/dart/bin:$HOME/.pub-cache/bin"
